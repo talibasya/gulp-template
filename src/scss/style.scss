@@ -1,0 +1,12 @@
+@import 'other.css';
+
+$height : 30px;
+
+body {
+	transform: rotate(7deg);
+
+	#test {
+		display: block;
+		height: $height;
+	}
+}
