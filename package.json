@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "gulp",
+    "connect": "gulp connect",
     "watch": "gulp watch",
     "scripts": "gulp scripts",
     "sass": "gulp sass",
