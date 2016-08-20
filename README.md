@@ -20,8 +20,14 @@ npm i
 
 Run and watch:
 ```
-npm start
+npm run start
 ```
+
+Run gulp server:
+```
+npm run connect
+```
+
 
 Other commands:
 - `npm run scripts`: compiles `*.js` files in 'src/js'
