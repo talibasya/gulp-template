@@ -8,6 +8,7 @@ var sass = require('gulp-sass');
 var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 
+var connect = require('gulp-connect');
 
 var arrJsFiles = [
 	'src/js/jquery.min.js', 
@@ -23,6 +24,14 @@ gulp.task('scripts', function() {
 		.pipe(uglify())
 		.pipe(gulp.dest('build/js'));
 });
+
+gulp.task('connect', function() {
+	connect.server({
+		root: ['build'],
+		port: '8080',
+		base: 'http://localhost',
+	})
+})
 
 
 gulp.task('images', function() {
