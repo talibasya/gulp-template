@@ -8,11 +8,12 @@ var sass = require('gulp-sass');
 var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 
-var connect = require('gulp-connect');
+const bs = require('browser-sync').create();
+// var connect = require('gulp-connect');
 
 var arrJsFiles = [
-	'src/js/jquery.min.js', 
-	'src/js/test1.js', 
+	'src/js/jquery.min.js',
+	'src/js/test1.js',
 	'src/js/test2.js'
 ]
 //concatenate JS files
@@ -26,11 +27,16 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('connect', function() {
-	connect.server({
-		root: ['build'],
-		port: '8080',
-		base: 'http://localhost',
-	})
+	bs.init({
+    server: 'build'
+  })
+
+  bs.watch('build/**/*.*').on('change', bs.reload);
+	// connect.server({
+		// root: ['build'],
+		// port: '8080',
+		// base: 'http://localhost',
+	// })
 })
 
 
@@ -43,7 +49,7 @@ gulp.task('images', function() {
 
 gulp.task('watch', function() {
 	gulp.watch(arrJsFiles, ['scripts']);
-	gulp.watch('src/scss/*.scss', ['sass']);
+	gulp.watch('src/scss/*.*', ['sass']);
 	// gulp.watch('src/images/**/*', ['images']);
 });
 
@@ -64,7 +70,7 @@ gulp.task('sass', function() {
 });*/
 
 // default task
-gulp.task('default', ['scripts', 'images', 'sass', 'watch']);
+gulp.task('default', ['scripts', 'images', 'sass', 'watch', 'connect']);
 // gulp.task('default', ['scripts', 'sass']);
 
 
